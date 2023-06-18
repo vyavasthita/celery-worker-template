@@ -9,3 +9,6 @@ celery
 redis
 mailtrap
 python-dotenv
+
+# Run Celery Worker
+poetry run celery -A worker.worker worker  --autoscale 10 --loglevel=info
