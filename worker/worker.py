@@ -1,6 +1,7 @@
 import os
 from celery import Celery
-from .email_helper import SendEmail
+import smtplib
+from email.mime.text import MIMEText
 from .config import config_by_name
 
 
@@ -22,6 +23,14 @@ def send_email(
     subject: str,
     body: str,
 ) -> tuple:
-    SendEmail.send_email(
-        sender_name, sender_email, receiver_name, receiver_email, subject, body
-    )
+    sender = f"{sender_name} <{sender_email}>"
+    receiver = f"{receiver_name} <{receiver_email}>"
+
+    message = MIMEText(body)
+    message["Subject"] = subject
+    message["From"] = sender
+    message["To"] = receiver
+
+    with smtplib.SMTP(config["SMTP_SERVER"], 2525) as server:
+        server.login(config["SMTP_USER_NAME"], config["SMTP_PASSWORD"])
+        server.sendmail(sender, receiver, message.as_string())
