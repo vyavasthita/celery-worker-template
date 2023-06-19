@@ -39,4 +39,4 @@ def send_email(
 
     with smtplib.SMTP(config["SMTP_SERVER"], config["SMTP_PORT"]) as server:
         server.login(config["SMTP_USER_NAME"], config["SMTP_PASSWORD"])
-        server.sendmail(sender, receiver, message.as_string())
+        # server.sendmail(sender, receiver, message.as_string())
