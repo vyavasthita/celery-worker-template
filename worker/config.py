@@ -32,7 +32,7 @@ devlopment_config = dict(
     CELERY_BROKER_URL=os.getenv("CELERY_BROKER_URL"),
     CELERY_RESULT_BACKEND=os.getenv("CELERY_RESULT_BACKEND"),
     SMTP_SERVER=os.getenv("SMTP_SERVER"),
-    SMTP_PORT=os.getenv("SMTP_PORT"),
+    SMTP_PORT=ast.literal_eval(os.getenv("SMTP_PORT")),
     SMTP_USER_NAME=os.getenv("SMTP_USER_NAME"),
     SMTP_PASSWORD=os.getenv("SMTP_PASSWORD"),
 )
@@ -41,7 +41,7 @@ aut_testing_config = dict(
     CELERY_BROKER_URL=os.getenv("CELERY_BROKER_URL"),
     CELERY_RESULT_BACKEND=os.getenv("CELERY_RESULT_BACKEND"),
     SMTP_SERVER=os.getenv("SMTP_SERVER"),
-    SMTP_PORT=os.getenv("SMTP_PORT"),
+    SMTP_PORT=ast.literal_eval(os.getenv("SMTP_PORT")),
     SMTP_USER_NAME=os.getenv("SMTP_USER_NAME"),
     SMTP_PASSWORD=os.getenv("SMTP_PASSWORD"),
 )
