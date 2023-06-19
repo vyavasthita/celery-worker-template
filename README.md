@@ -7,8 +7,9 @@ sudo apt install redis-server
 
 celery
 redis
-mailtrap
 python-dotenv
 
+dev env
+black
 # Run Celery Worker
 poetry run celery -A worker.worker worker  --autoscale 10 --loglevel=info
